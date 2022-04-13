@@ -13,6 +13,7 @@ const SearchForm = () => {
     e.preventDefault();
     const movie = await fetchMovie(search);
     setMovie(movie.data);
+    console.log(movie);
   };
 
   return (

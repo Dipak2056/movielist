@@ -1,16 +1,15 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-const CustomCard = () => {
+const CustomCard = ({ movie }) => {
   return (
-    <div className="card">
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+    <div className="card movie-card">
+      <Card className="movie-card" style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={movie.Poster} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {movie.Director}, {movie.Runtime} ,{movie.Country}, {movie.Writer}
           </Card.Text>
           <Button variant="primary">Add to List</Button>
         </Card.Body>
