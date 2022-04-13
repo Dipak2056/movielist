@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-const CustomCard = ({ movie }) => {
+const CustomCard = ({ movie, handleAddToList }) => {
   return (
     <div className="card movie-card">
       <Card className="movie-card" style={{ width: "18rem" }}>
@@ -9,9 +9,11 @@ const CustomCard = ({ movie }) => {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>
-            {movie.Director}, {movie.Runtime} ,{movie.Country}, {movie.Writer}
+            {movie.Director} {movie.Runtime} {movie.Country} {movie.Writer}
           </Card.Text>
-          <Button variant="primary">Add to List</Button>
+          <Button variant="primary" onClick={handleAddToList}>
+            Add to List
+          </Button>
         </Card.Body>
       </Card>
     </div>

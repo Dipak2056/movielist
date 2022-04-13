@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CustomCard from "../CustomCard/CustomCard";
 import { fetchMovie } from "../../Helper/axiosHelper";
-const SearchForm = () => {
+const SearchForm = ({ handleAddToList }) => {
   const [search, setSearch] = useState("");
   const [movie, setMovie] = useState({});
 
@@ -21,7 +21,7 @@ const SearchForm = () => {
         <input type="text" onChange={handleChange} /> <span></span>
         <button>Search</button>
       </form>
-      <CustomCard movie={movie} />
+      <CustomCard movie={movie} handleAddToList={handleAddToList} />
     </div>
   );
 };
