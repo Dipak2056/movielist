@@ -1,9 +1,14 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 
-const CustomCard = ({ movie, handleOnAddToList }) => {
-  return (
-    <div className="card movie-card">
+const CustomCard = ({
+  movie,
+  handleOnAddToList,
+  handleOnDelete,
+  btnDelete,
+}) => {
+  const generatedCard = (movie) => {
+    return (
       <Card className="movie-card" style={{ width: "18rem" }}>
         <Card.Img variant="top" src={movie.Poster} />
         <Card.Body>
@@ -11,15 +16,39 @@ const CustomCard = ({ movie, handleOnAddToList }) => {
           <Card.Text>
             {movie.Director} {movie.Runtime} {movie.Country} {movie.Writer}
           </Card.Text>
-          <Button
-            variant="primary"
-            onClick={() => handleOnAddToList("Happy", movie)}
-          >
-            Add to List
-          </Button>
+          {btnDelete ? (
+            <Button
+              variant="btn btn-danger w-100"
+              onClick={() => handleOnDelete(movie.imdbID)}
+            >
+              <box-icon name="trash">Delete</box-icon>
+            </Button>
+          ) : (
+            <div className="d-flex justify-content-between">
+              <Button
+                variant="info"
+                onClick={() => handleOnAddToList("Happy", movie)}
+              >
+                Happy
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => handleOnAddToList("Sad", movie)}
+              >
+                Lazy
+              </Button>
+            </div>
+          )}
         </Card.Body>
       </Card>
-    </div>
+    );
+  };
+  return (
+    <Col sm="12" md="6" lg="4" xl="3">
+      {movie?.Poster && movie?.Title && movie?.imdbRating
+        ? generatedCard(movie)
+        : ""}
+    </Col>
   );
 };
 
